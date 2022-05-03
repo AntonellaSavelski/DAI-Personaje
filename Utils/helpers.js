@@ -1,7 +1,7 @@
 import sql from 'mssql'
 import config from '../Utils/db.js'
 
-const dbHelper= async (id, personaje, query, nom) => {
+const dbHelper= async (id, personaje, query) => {
     const pool = await sql.connect(config);
     const response = await pool.request()
         .input('id', sql.Int, id ?? 0)
@@ -10,7 +10,6 @@ const dbHelper= async (id, personaje, query, nom) => {
         .input('edad',sql.Int, personaje?.edad ?? 0)
         .input('peso',sql.Int, personaje?.peso ?? 0)
         .input('historia',sql.Text, personaje?.historia ?? '')
-        .input('nom',sql.Text, nom ?? '')
         .query(query);
         return response;
 };

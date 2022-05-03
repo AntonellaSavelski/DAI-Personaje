@@ -4,11 +4,11 @@ import dbHelper from '../../Utils/helpers.js'
 const personajeTabla = process.env.DB_TABLA_PERSONAJE;
 
 export class personajeService {
-    getPersonaje = async (nom) => {
+    getPersonaje = async (nombre, edad) => {
         console.log('Función de traer personaje por nombre');
 
-        const query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nom`;
-        const response = await dbHelper(undefined, undefined, query, nom)
+        const query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nombre AND edad = @edad`;
+        const response = await dbHelper(undefined, {nombre, edad}, query)
 
         console.log(response)
 
