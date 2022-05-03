@@ -4,11 +4,11 @@ import dbHelper from '../../Utils/helpers.js'
 const personajeTabla = process.env.DB_TABLA_PERSONAJE;
 
 export class personajeService {
-    getPersonaje = async () => {
-        console.log('Función de traer personaje');
+    getPersonaje = async (nom) => {
+        console.log('Función de traer personaje por nombre');
 
-        const query = `SELECT * FROM ${personajeTabla}`;
-        const response = await dbHelper(undefined, undefined, query)
+        const query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nom`;
+        const response = await dbHelper(undefined, undefined, query, nom)
 
         console.log(response)
 
@@ -37,7 +37,7 @@ export class personajeService {
     updatePersonajeById = async (id, personaje) => {
         console.log('Función de actualizar personajes');
 
-        const query = `UPDATE Personaje SET imagen = @imagen, nombre = @nombre, edad = @edad, peso = @peso, historia = @historia WHERE id = @Id`;
+        const query = `UPDATE ${personajeTabla} SET imagen = @imagen, nombre = @nombre, edad = @edad, peso = @peso, historia = @historia WHERE id = @Id`;
         const response = await dbHelper(id, personaje, query)
         
         console.log(response)

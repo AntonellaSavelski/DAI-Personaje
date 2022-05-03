@@ -4,17 +4,18 @@ import { personajeService } from '../services/personajeService.js';
 const router = Router();
 const PersonajeService = new personajeService();
 
-router.get('/getall', async (req, res) => {
+router.get('/?', async (req, res) => {
+  console.log(`Nombre del personaje: ${req.query.nombre}`);
   console.log(`Esta es la operación de traer todos`);
   
-  const personaje = await PersonajeService.getPersonaje();
+  const personaje = await PersonajeService.getPersonaje(req.query.nombre);
 
   return res.status(200).json(personaje);
 });
 
-router.get('/getid/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   console.log(`Id del personaje: ${req.params.id}`);
-  console.log(`Esta es la operación de traer todos`);
+  console.log(`Esta es la operación de traer personaje por id`);
 
   const personaje = await PersonajeService.getPersonajeById(req.params.id);
 
@@ -33,7 +34,7 @@ router.put('/update/:id', async (req, res) => {
   console.log(`Id del personaje: ${req.params.id}`);
   console.log(`Esta es la función de actualizar`);
 
-  const personaje = await PersonajeService.updatePersonajeById(req.body);
+  const personaje = await PersonajeService.updatePersonajeById(req.params.id, req.body);
 
   return res.status(200).json(personaje);
 });
