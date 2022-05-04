@@ -5,9 +5,20 @@ const personajeTabla = process.env.DB_TABLA_PERSONAJE;
 
 export class personajeService {
     getPersonaje = async (nombre, edad) => {
-        console.log('Función de traer personaje por nombre');
-
-        const query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nombre AND edad = @edad`;
+        console.log('Función de traer personaje por buscador');
+        let query;
+        if (!nombre){
+            query = `SELECT * FROM ${personajeTabla} WHERE edad = @edad`;
+        }
+        else if (!edad){
+            query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nombre`;
+        }
+        else if ((nombre)&&(edad)){
+            query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nombre AND edad = @edad`;
+        } 
+        else {
+            console.log('No hay ningun personaje que coincida con esos valores')
+        }      
         const response = await dbHelper(undefined, {nombre, edad}, query)
 
         console.log(response)
