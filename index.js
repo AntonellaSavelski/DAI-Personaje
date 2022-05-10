@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import passport from 'passport';
-import { jwtStrategy } from './src/common/jwt.strategy.js';
+import {jwtStrategy} from './src/common/jwt.strategy.js';
 import PersonajeRouter from "./src/controllers/personajeController.js";
 
 const app = express();

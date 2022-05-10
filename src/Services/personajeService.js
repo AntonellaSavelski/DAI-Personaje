@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import dbHelper from '../../Utils/helpers.js'
+import dbHelper from '../../Utils/helpers.js';
 
 const personajeTabla = process.env.DB_TABLA_PERSONAJE;
 
