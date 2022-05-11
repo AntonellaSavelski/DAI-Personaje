@@ -2,40 +2,50 @@ import 'dotenv/config'
 import dbHelper from '../../Utils/helpers.js';
 
 const personajeTabla = process.env.DB_TABLA_PERSONAJE;
+const PeliculaTabla = process.env.DB_TABLA_PELICULA;
 
 export class personajeService {
-    getPersonaje = async (nombre, edad) => {
+    getCharacter = async (nombre, edad) => {
         console.log('Función de traer personaje por buscador');
         let query;
-        if (!nombre){
-            query = `SELECT * FROM ${personajeTabla} WHERE edad = @edad`;
+
+        if (!edad && !nombre ){
+            query = `SELECT * FROM ${personajeTabla}`;
+        }      
+        else if (!nombre){
+            query = `SELECT id, imagen, nombre FROM ${personajeTabla} WHERE edad = @edad`;
         }
         else if (!edad){
-            query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nombre`;
+            query = `SELECT id, imagen, nombre FROM ${personajeTabla} WHERE nombre = @nombre`;
         }
         else if ((nombre)&&(edad)){
-            query = `SELECT * FROM ${personajeTabla} WHERE nombre = @nombre AND edad = @edad`;
+            query = `SELECT id, imagen, nombre FROM ${personajeTabla} WHERE nombre = @nombre AND edad = @edad`;
         } 
-        else {
-            console.log('No hay ningun personaje que coincida con esos valores')
-        }      
         const response = await dbHelper(undefined, {nombre, edad}, query)
+
+        if (response.recordset.length==0){
+            console.log('No hay ningun personaje que coincida con esos valores')
+        }
+        console.log(response)
+
+        return response.recordset;
+    }
+    getCharacterById = async (id) => {
+        console.log('Funcion de traer personaje por id');
+        let query;
+
+        query = `SELECT * FROM ${personajeTabla} per WHERE per.id = @id`;
+        const personajes= await dbHelper(id, personaje, query)
+
+        query = `SELECT * FROM ${PeliculaTabla} peli`;
+        const peliculas = await dbHelper(id, pelicula, query)
+        personajes.peliculas = peliculas
 
         console.log(response)
 
         return response.recordset;
     }
-    getPersonajeById = async (id) => {
-        console.log('Funcion de traer personaje por id');
-
-        const query = `SELECT * FROM ${personajeTabla} where id = @id`;
-        const response = await dbHelper(id, undefined, query)
-
-        console.log(response)
-
-        return response.recordset[0];
-    }
-    createPersonaje = async (personaje) => {
+    createCharacter = async (personaje) => {
         console.log('Función de crear personaje');
 
         const query = `INSERT INTO ${personajeTabla}(imagen, nombre, edad, peso, historia) VALUES (@imagen, @nombre, @edad, @peso, @historia)`;
@@ -45,7 +55,7 @@ export class personajeService {
 
         return response.recordset;
     }
-    updatePersonajeById = async (id, personaje) => {
+    updateCharacterById = async (id, personaje) => {
         console.log('Función de actualizar personajes');
 
         const query = `UPDATE ${personajeTabla} SET imagen = @imagen, nombre = @nombre, edad = @edad, peso = @peso, historia = @historia WHERE id = @Id`;
@@ -55,7 +65,7 @@ export class personajeService {
 
         return response.recordset;
     }
-    deletePersonajeById = async (id) => {
+    deleteCharacterById = async (id) => {
         console.log('Esta es la funcion de eliminar');
 
         const query = `DELETE FROM ${personajeTabla} WHERE id = @id`;

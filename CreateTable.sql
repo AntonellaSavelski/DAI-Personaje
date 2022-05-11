@@ -3,10 +3,11 @@ GO
 CREATE TABLE [dbo].[personaje](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[imagen] [varchar](2048) NOT NULL,
-	[nombre] [nchar](10) NOT NULL,
+	[nombre] [varchar](50) NOT NULL,
 	[edad] [int] NOT NULL,
 	[peso] [int] NOT NULL,
-	[historia] [text] NOT NULL,
+	[historia] [varchar](2048) NOT NULL,
+	[pelicula] [varchar](2048) NULL,
  CONSTRAINT [PK_personaje] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -15,7 +16,7 @@ CREATE TABLE [dbo].[personaje](
 GO
 SET IDENTITY_INSERT [dbo].[personaje] ON 
 
-INSERT [dbo].[personaje] ([id], [imagen], [nombre], [edad], [peso], [historia]) VALUES (1, N'dsdsd', N'pepe', 1, 67, N'kjkjsajks')
+INSERT [dbo].[personaje] ([id], [imagen], [nombre], [edad], [peso], [historia]) VALUES (1, N'https://images.app.goo.gl/GwSuUcx6uUKTfb617', N'Homero Simpson', 65, 108, N'Padre de familia')
 SET IDENTITY_INSERT [dbo].[personaje] OFF
 GO
 USE [master]
