@@ -8,8 +8,10 @@ const PersonajeService = new personajeService();
 router.get('/?', Authenticate, async (req, res) => {
   console.log(`Nombre del personaje: ${req.query.nombre}`);
   console.log(`Edad del personaje: ${req.query.edad}`);
+  console.log(`Edad del personaje: ${req.query.peso}`);
+  console.log(`Edad del personaje: ${req.query.idPeli}`);
   
-  const personaje = await PersonajeService.getCharacter(req.query.nombre,req.query.edad);
+  const personaje = await PersonajeService.getCharacter(req.query.nombre,req.query.edad, req.query.peso, req.query.idPeli);
 
   return res.status(200).json(personaje);
 });

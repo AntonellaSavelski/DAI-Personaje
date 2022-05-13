@@ -5,7 +5,7 @@ const personajeTabla = process.env.DB_TABLA_PERSONAJE;
 const PeliculaTabla = process.env.DB_TABLA_PELICULA;
 
 export class personajeService {
-    getCharacter = async (nombre, edad) => {
+    getCharacter = async (nombre, edad, peso, idPeli) => {
         console.log('Función de traer personaje por buscador');
         let query;
 
@@ -34,10 +34,10 @@ export class personajeService {
         console.log('Funcion de traer personaje por id');
         let query;
 
-        query = `SELECT * FROM ${personajeTabla} per WHERE per.id = @id`;
+        query = `SELECT * FROM ${personajeTabla} WHERE id = @id`;
         const personajes= await dbHelper(id, personaje, query)
 
-        query = `SELECT * FROM ${PeliculaTabla} peli`;
+        query = `SELECT * FROM ${PeliculaTabla}`;
         const peliculas = await dbHelper(id, pelicula, query)
         personajes.peliculas = peliculas
 
