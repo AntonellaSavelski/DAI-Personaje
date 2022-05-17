@@ -3,6 +3,7 @@ import dbHelper from '../../Utils/helpers.js';
 
 const personajeTabla = process.env.DB_TABLA_PERSONAJE;
 const PeliculaTabla = process.env.DB_TABLA_PELICULA;
+const IntermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 
 export class personajeService {
     getCharacter = async (nombre, edad, peso, idPeli) => {
@@ -22,7 +23,7 @@ export class personajeService {
             query = `SELECT id, imagen, nombre FROM ${personajeTabla} WHERE nombre = @nombre AND edad = @edad`;
         } 
         const response = await dbHelper(undefined, {nombre, edad}, query)
-
+        
         if (response.recordset.length==0){
             console.log('No hay ningun personaje que coincida con esos valores')
         }
@@ -35,15 +36,13 @@ export class personajeService {
         let query;
 
         query = `SELECT * FROM ${personajeTabla} WHERE id = @id`;
-        const personajes= await dbHelper(id, personaje, query)
+        const personajes= await dbHelper(id, {}, query)
 
-        query = `SELECT * FROM ${PeliculaTabla}`;
-        const peliculas = await dbHelper(id, pelicula, query)
-        personajes.peliculas = peliculas
+        query = `SELECT ${PeliculaTabla}.* FROM ${PeliculaTabla}, ${personajeTabla}, ${IntermediaTabla} WHERE ${PeliculaTabla}.idPeli = ${IntermediaTabla}.idPelicula AND ${personajeTabla}.id = ${IntermediaTabla}.idPersonaje AND ${personajeTabla}.id = @id`;
+        const peliculas = await dbHelper(id, {}, query)
+        personajes.recordset[0].peliculas = peliculas.recordset
 
-        console.log(response)
-
-        return response.recordset;
+        return personajes.recordset[0];
     }
     createCharacter = async (personaje) => {
         console.log('Función de crear personaje');

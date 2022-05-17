@@ -5,7 +5,7 @@ import { Authenticate} from '../common/jwt.strategy.js'
 const router = Router();
 const PeliculaService = new peliculaService();
 
-router.get('/?', Authenticate, async (req, res) => {
+router.get('/', Authenticate, async (req, res) => {
     console.log(`Título de la pelicula: ${req.query.titulo}`);
     
     const pelicula = await PeliculaService.getMovie(req.query.titulo,req.query.orden);
@@ -21,7 +21,7 @@ router.get('/:id', Authenticate, async (req, res) => {
     return res.status(200).json(pelicula);
 });
   
-router.post('/create', Authenticate, async (req, res) => {
+router.post('/', Authenticate, async (req, res) => {
     console.log(`Creando la pelicula`);
   
     const pelicula = await PeliculaService.createMovie(req.body);
@@ -29,7 +29,7 @@ router.post('/create', Authenticate, async (req, res) => {
     return res.status(201).json(pelicula);
 });
   
-router.put('/update/:id', Authenticate, async (req, res) => {
+router.put('/:id', Authenticate, async (req, res) => {
     console.log(`Id de la pelicula: ${req.params.id}`);
     console.log(`Esta es la función de actualizar`);
   
@@ -38,7 +38,7 @@ router.put('/update/:id', Authenticate, async (req, res) => {
     return res.status(200).json(pelicula);
 });
   
-router.delete('/delete/:id', Authenticate, async (req, res) => {
+router.delete('/:id', Authenticate, async (req, res) => {
     console.log(`Id de la pelicula: ${req.params.id}`);
     console.log(`Esta es la función de borrar`);
   

@@ -3,6 +3,7 @@ import dbHelper from '../../Utils/helpers.js';
 
 const PeliculaTabla = process.env.DB_TABLA_PELICULA;
 const personajeTabla = process.env.DB_TABLA_PERSONAJE;
+const IntermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 
 export class peliculaService {
     getMovie = async (titulo, orden) => {
@@ -22,7 +23,7 @@ export class peliculaService {
             query = `SELECT idPeli, imagenPelicula, titulo, fechaCreacion FROM ${PeliculaTabla} order by fechaCreacion DESC`;
         }
        
-        const response = await dbHelper(undefined, {titulo, orden}, query)
+        const response = await dbHelper(undefined,{titulo, orden}, query)
 
         if (response.recordset.length==0){
             console.log('No hay ninguna pelicula que tenga ese titulo')
@@ -31,25 +32,23 @@ export class peliculaService {
 
         return response.recordset;
     }
-    getMovierById = async (idPeli) => {
+    getMovieById = async (idPeli) => {
         console.log('Funcion de traer pelicula por id');
         let query;
 
         query = `SELECT * FROM ${PeliculaTabla} WHERE idPeli = @id`;
-        const peliculas= await dbHelper(idPeli, pelicula, query)
+        const peliculas= await dbHelper(idPeli, {}, query)
 
-        query = `SELECT * FROM ${personajeTabla}`;
-        const personajes = await dbHelper(id, personaje, query)
-        peliculas.personajes = personajes
+        query = `SELECT ${personajeTabla}.* FROM ${personajeTabla}, ${PeliculaTabla}, ${IntermediaTabla} WHERE ${personajeTabla}.id = ${IntermediaTabla}.idPersonaje AND ${PeliculaTabla}.idPeli = ${IntermediaTabla}.idPelicula AND ${PeliculaTabla}.idPeli = @id`;
+        const personajes = await dbHelper(idPeli, {}, query)
+        peliculas.recordset[0].personajes = personajes.recordset
 
-        console.log(response)
-
-        return response.recordset;
+        return peliculas.recordset[0];
     }
     createMovie = async (pelicula) => {
         console.log('Función de crear pelicula');
 
-        const query = `INSERT INTO ${PeliculaTabla}(idPeli, imagenPelicula, titulo, fechaCreacion, calificacion) VALUES (@idPeli, @imagenPelicula, @titulo, @fechaCreacion, @calificacion)`;
+        const query = `INSERT INTO ${PeliculaTabla}(imagenPelicula, titulo, fechaCreacion, calificacion) VALUES (@imagenPelicula, @titulo, @fechaCreacion, @calificacion)`;
         const response = await dbHelper(undefined, pelicula, query)
 
         console.log(response)
