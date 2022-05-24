@@ -8,21 +8,22 @@ const IntermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 export class personajeService {
     getCharacter = async (nombre, edad, peso, idPeli) => {
         console.log('Función de traer personaje por buscador');
-        let query;
-
-        if (!edad && !nombre ){
-            query = `SELECT * FROM ${personajeTabla}`;
-        }      
-        else if (!nombre){
-            query = `SELECT id, imagen, nombre FROM ${personajeTabla} WHERE edad = @edad`;
+        let query= `SELECT ${personajeTabla}.id, ${personajeTabla}.imagen, ${personajeTabla}.nombre FROM ${personajeTabla}, ${IntermediaTabla} WHERE ${personajeTabla}.id = ${IntermediaTabla}.idPersonaje `;
+    
+        if (nombre){
+            query += `AND nombre = @nombre `;
         }
-        else if (!edad){
-            query = `SELECT id, imagen, nombre FROM ${personajeTabla} WHERE nombre = @nombre`;
+        if (edad){
+            query += `AND edad = @edad `;
         }
-        else if ((nombre)&&(edad)){
-            query = `SELECT id, imagen, nombre FROM ${personajeTabla} WHERE nombre = @nombre AND edad = @edad`;
+        if (peso){
+            query += `AND peso = @peso `;
         } 
-        const response = await dbHelper(undefined, {nombre, edad}, query)
+        if (idPeli){
+            query += `AND ${personajeTabla}.id = @idPeli`;
+        } 
+        console.log(query)
+        const response = await dbHelper(undefined, {nombre, edad, peso, idPeli}, query)
         
         if (response.recordset.length==0){
             console.log('No hay ningun personaje que coincida con esos valores')

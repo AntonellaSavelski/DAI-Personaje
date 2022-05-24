@@ -7,7 +7,6 @@ const IntermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 
 export class peliculaService {
     getMovie = async (titulo, orden) => {
-        console.log('Función de traer personaje por buscador');
         let query;
 
         if (!titulo && !orden){
@@ -33,7 +32,6 @@ export class peliculaService {
         return response.recordset;
     }
     getMovieById = async (idPeli) => {
-        console.log('Funcion de traer pelicula por id');
         let query;
 
         query = `SELECT * FROM ${PeliculaTabla} WHERE idPeli = @id`;
@@ -46,7 +44,6 @@ export class peliculaService {
         return peliculas.recordset[0];
     }
     createMovie = async (pelicula) => {
-        console.log('Función de crear pelicula');
 
         const query = `INSERT INTO ${PeliculaTabla}(imagenPelicula, titulo, fechaCreacion, calificacion) VALUES (@imagenPelicula, @titulo, @fechaCreacion, @calificacion)`;
         const response = await dbHelper(undefined, pelicula, query)
@@ -56,7 +53,6 @@ export class peliculaService {
         return response.recordset;
     }
     updateMovieById = async (idPeli, pelicula) => {
-        console.log('Función de actualizar pelicula');
 
         const query = `UPDATE ${PeliculaTabla} SET imagenPelicula = @imagenPelicula, titulo = @titulo, fechaCreacion = @fechaCreacion, calificacion = @calificacion WHERE idPeli = @Id`;
         const response = await dbHelper(idPeli, pelicula, query)
@@ -66,7 +62,6 @@ export class peliculaService {
         return response.recordset;
     }
     deleteMovieById = async (idPeli) => {
-        console.log('Esta es la funcion de eliminar');
 
         const query = `DELETE FROM ${PeliculaTabla} WHERE idPeli = @id`;
         const response = await dbHelper(idPeli, undefined, query)
