@@ -20,7 +20,7 @@ export class personajeService {
             query += `AND peso = @peso `;
         } 
         if (idPeli){
-            query += `AND ${personajeTabla}.id = @idPeli`;
+            query += `AND ${IntermediaTabla}.idPelicula = @idPeli`;
         } 
         console.log(query)
         const response = await dbHelper(undefined, {nombre, edad, peso, idPeli}, query)

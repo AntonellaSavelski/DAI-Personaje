@@ -9,5 +9,7 @@ PASOS PARA INICIAR EL PROGRAMA DESDE CERO:
 7) Abrir el sql managment studio y crear una base de datos llamada DAI-Personaje
 8) Crear una nueva query, copiar y ejecutar el archivo .sql que se encuentra en esta carpeta llamado "CreateLoginAndUser.sql"
 9) Crear otra query, copiar y ejecutar el archivo .sql que se encuentra en esta carpeta llamado "CreateTable.sql"
-10) Abrir el postman y generar un token, escribiendo una request que indique lo siguiente: "localhost:5000/auth/login"
-11) Copiar el token generado, ir a "authorization", seleccionar "Bearer Token" y pegarlo ahi.
+10) En la terminal del visual ejecutar el proyecto "npm install"
+11) Abrir el postman y abrir la colección "DAI-Personaje.postman_collection", cambiar la variable al puerto que corresponda
+12) Generar un token, abriendo la request llamada "Autenticación"
+13) Copiar el token generado, ir a "authorization", seleccionar "Bearer Token" y pegarlo ahi.

@@ -1,0 +1,433 @@
+{
+	"info": {
+		"_postman_id": "7045e5b7-7312-4cc3-8051-f2be8a4a2640",
+		"name": "DAI-Personaje",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticación",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TraerPersonaje",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/characters/?peso=64",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"characters",
+						""
+					],
+					"query": [
+						{
+							"key": "idPeli",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "nombre",
+							"value": "HomeroSimpson",
+							"disabled": true
+						},
+						{
+							"key": "edad",
+							"value": "56",
+							"disabled": true
+						},
+						{
+							"key": "peso",
+							"value": "64"
+						}
+					]
+				},
+				"description": "Se puede seleccionar por su:\r\nnombre= x\r\npeso= x\r\nedad= x\r\nidPeli= x\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TraerPersonajeId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/characters/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"characters",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearPersonaje",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\": \"EstaEsLaImagen\",\r\n    \"nombre\": \"Personaje\",\r\n    \"peso\": 54,\r\n    \"edad\": 17,\r\n    \"historia\":\"NuevoPersonaje\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/characters/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"characters",
+						"create"
+					]
+				},
+				"description": "{\r\n    \"imagen\": \"EstaEsLaImagen\",\r\n    \"nombre\": \"Personaje\",\r\n    \"peso\": 54,\r\n    \"edad\": 17,\r\n    \"historia\":\"NuevoPersonaje\"\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPersonaje",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagen\": \"EstaEsLaImagenActualizada\",\r\n    \"nombre\": \"PersonajeNuevo\",\r\n    \"peso\": 64,\r\n    \"edad\": 18,\r\n    \"historia\":\"PersonajeActualizado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/characters/update/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"characters",
+						"update",
+						"3"
+					]
+				},
+				"description": "{\r\n    \"imagen\": \"EstaEsLaImagenActualizada\",\r\n    \"nombre\": \"PersonajeNuevo\",\r\n    \"peso\": 64,\r\n    \"edad\": 18,\r\n    \"historia\":\"PersonajeActualizado\"\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "BorrarPersonaje",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/characters/delete/8",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"characters",
+						"delete",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TraerPelicula",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/movies?titulo=Titanic",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "titulo",
+							"value": "Titanic"
+						},
+						{
+							"key": "orden",
+							"value": "ASC",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TraerPeliculaId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/movies/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movies",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearPelicula",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagenPelicula\":\"jjasjssj\",\r\n    \"titulo\": \"peli44\",\r\n    \"fechaCreacion\":\"3333\",\r\n    \"calificacion\": \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/movies/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movies",
+						""
+					]
+				},
+				"description": "{\r\n    \"imagenPelicula\":\"imagenNuevaPeli\",\r\n    \"titulo\": \"peliDePrueba\",\r\n    \"fechaCreacion\":\"2022\",\r\n    \"calificacion\": \"3\"\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPelicula",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imagenPelicula\":\"ActualizoPeli\",\r\n    \"titulo\": \"peliActualizada\",\r\n    \"fechaCreacion\":\"2023\",\r\n    \"calificacion\": \"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/movies/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movies",
+						"4"
+					]
+				},
+				"description": "{\r\n    \"imagenPelicula\":\"ActualizoPeli\",\r\n    \"titulo\": \"peliActualizada\",\r\n    \"fechaCreacion\":\"2023\",\r\n    \"calificacion\": \"4\"\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "BorrarPelicula",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJXVEQzaE9hRUZ0Rml0QzU4azRAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTM5OTQ3NDMsImV4cCI6MTY1NDAyOTMwMywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3QvIl0sImlzcyI6Imh0dHA6Ly9wZXJzb25hamUub3J0LyIsInN1YiI6IldURDNoT2FFRnRGaXRDNThrNCJ9.FPqp9tcImakjR8hPbfKc_zthhho_86zlq8JKze7-gvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/movies/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movies",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:5000"
+		}
+	]
+}
