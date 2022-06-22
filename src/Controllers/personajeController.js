@@ -1,26 +1,24 @@
 import { Router } from 'express';
 import { personajeService } from '../services/personajeService.js';
 import { Authenticate} from '../common/jwt.strategy.js'
+import { getPersonaje } from '../../axios/axios.js';
 
 const router = Router();
 
 const PersonajeService = new personajeService();
-router.get("/axios/getAll", Authenticate, async (req, res) => {
+
+router.get('/axios/getAll', async (req, res) => {
   console.log(`Nombre del personaje: ${req.query.nombre}`);
   console.log(`Edad del personaje: ${req.query.edad}`);
   console.log(`Peso del personaje: ${req.query.peso}`);
   console.log(`Id de la pelicula: ${req.query.idPeli}`);
   
-  const personaje = await PersonajeService.getCharacter(req.query.nombre,req.query.edad, req.query.peso, req.query.idPeli);
+  const personaje = await getPersonaje(req.query.nombre,req.query.edad, req.query.peso, req.query.idPeli);
 
   return res.status(200).json(personaje);
 });
 
-router.get('/?', Authenticate, async (req, res) => {
-  console.log(`Nombre del personaje: ${req.query.nombre}`);
-  console.log(`Edad del personaje: ${req.query.edad}`);
-  console.log(`Peso del personaje: ${req.query.peso}`);
-  console.log(`Id de la pelicula: ${req.query.idPeli}`);
+router.get('/?', async (req, res) => {
   
   const personaje = await PersonajeService.getCharacter(req.query.nombre,req.query.edad, req.query.peso, req.query.idPeli);
 
